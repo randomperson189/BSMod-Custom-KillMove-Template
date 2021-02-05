@@ -1,0 +1,11 @@
+{
+	"title"		:	"BSMod Custom KillMove Template",
+	"type"		:	"weapon",
+	"tags"		:	[ "fun" ],
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}
