@@ -43,8 +43,6 @@ $attachment "armor_torsoback" "ValveBiped.Bip01_Spine2" -2.5 -4.5 0 rotate 0 0 0
 
 $cbox 0 0 0 0 0 0
 
-$bbox -3.602 -11.671 0.419 5.034 11.678 65.998
-
 $definebone "ValveBiped.Bip01_Pelvis" "" -0.000005 -0.533615 38.566917 0 0 89.999982 0 0 0 0 0 0
 $definebone "ValveBiped.Bip01_Spine" "ValveBiped.Bip01_Pelvis" 0.000005 3.345127 -2.981901 4.944224 89.999982 89.999982 0 0 0 0 0 0
 $definebone "ValveBiped.Bip01_Spine1" "ValveBiped.Bip01_Spine" 4.018318 0 0 0 -1.675443 0 0 0 0 0 0 0
