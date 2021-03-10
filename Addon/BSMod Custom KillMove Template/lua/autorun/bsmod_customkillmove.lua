@@ -1,3 +1,23 @@
+
+--This adds to a list of entities that can be killmovable (highlighted blue) when taking damage
+--ValveBipeds by default are on this list so use this only for entities with different bone structures such as headcrabs
+
+--Make sure the entity you're checking for in the killmove function below is added to this list, you can add as many as you want
+
+timer.Simple(0, function()
+	if killMovableEnts then
+		
+		--These are commented out because we won't be using them in this example, feel free to uncomment them if you want to add more non ValveBiped npcs to be killmovable
+		
+		--[[if table.HasValue(killMovableEnts, "npc_strider") then
+			table.insert( killMovableEnts, "npc_strider" )
+		end
+		if table.HasValue(killMovableEnts, "npc_headcrab") then
+			table.insert( killMovableEnts, "npc_headcrab" )
+		end]]
+	end
+end)
+
 --This is the hook for custom killmoves
 
 --IMPORTANT: Make sure to change the UniqueName to something else to avoid conflicts with other custom killmove addons
