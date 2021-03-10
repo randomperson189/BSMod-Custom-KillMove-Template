@@ -9,10 +9,10 @@ timer.Simple(0, function()
 		
 		--These are commented out because we won't be using them in this example, feel free to uncomment them if you want to add more non ValveBiped npcs to be killmovable
 		
-		--[[if table.HasValue(killMovableEnts, "npc_strider") then
+		--[[if !table.HasValue(killMovableEnts, "npc_strider") then
 			table.insert( killMovableEnts, "npc_strider" )
 		end
-		if table.HasValue(killMovableEnts, "npc_headcrab") then
+		if !table.HasValue(killMovableEnts, "npc_headcrab") then
 			table.insert( killMovableEnts, "npc_headcrab" )
 		end]]
 	end
