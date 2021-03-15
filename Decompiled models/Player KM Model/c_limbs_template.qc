@@ -135,8 +135,6 @@ $bonemerge "ValveBiped.Bip01_R_Finger01"
 $bonemerge "ValveBiped.Bip01_R_Finger02"
 $bonemerge "ValveBiped.Bip01_R_Wrist"
 
-$sectionframes 30 120
-
 $sequence "killmove_zombie_punch1" {
 	"c_limbs_template_anims\killmove_zombie_punch1.smd"
 	fadein 0.2
