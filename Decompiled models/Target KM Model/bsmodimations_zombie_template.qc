@@ -155,34 +155,6 @@ $bonemerge "ValveBiped.Bip01_R_Finger0"
 $bonemerge "ValveBiped.Bip01_R_Finger01"
 $bonemerge "ValveBiped.Bip01_R_Finger02"
 
-
-// The 32 below is a guess until further is known about the format.
-$animblocksize 32
-
-$bonesaveframe "ValveBiped.Bip01_Pelvis" position rotation
-$bonesaveframe "ValveBiped.Bip01_Spine" rotation
-$bonesaveframe "ValveBiped.Bip01_Spine1" rotation
-$bonesaveframe "ValveBiped.Bip01_Spine2" rotation
-$bonesaveframe "ValveBiped.Bip01_Spine4" rotation
-$bonesaveframe "ValveBiped.Bip01_Neck1" rotation
-$bonesaveframe "ValveBiped.Bip01_Head1" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Clavicle" rotation
-$bonesaveframe "ValveBiped.Bip01_R_UpperArm" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Forearm" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Hand" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Clavicle" rotation
-$bonesaveframe "ValveBiped.Bip01_L_UpperArm" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Forearm" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Hand" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Thigh" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Calf" rotation
-$bonesaveframe "ValveBiped.Bip01_R_Foot" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Thigh" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Calf" rotation
-$bonesaveframe "ValveBiped.Bip01_L_Foot" rotation
-
-$sectionframes 30 122
-
 $poseparameter "aim_yaw" -48.5701 48.5905 loop 0
 $poseparameter "aim_pitch" -88.88165 49.98479 loop 0
 
