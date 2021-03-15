@@ -81,6 +81,10 @@ end)
 
 hook.Add("CustomKMEffects", "UniqueName", function(ply, animName, targetModel)
 	
+	local targetHeadBone = nil
+		
+	if IsValid (targetModel) then targetHeadBone = targetModel:GetHeadBone() end
+	
 	if animName == "killmove_zombie_punch1" then --Check the killmove animation names
 		
 		--Set a timer for effects, you can add more timers for more sounds
@@ -91,6 +95,19 @@ hook.Add("CustomKMEffects", "UniqueName", function(ply, animName, targetModel)
 			--This function will play random sounds. for example: here are 2 sound files killmovesound1 and killmovesound2, using this function with min being 1 and max being 2, it will choose a random one of those between that range to play.
 			
 			PlayRandomSound(ply, 1 --[[min]], 5 --[[max]], "player/killmove/km_hit" --[[path to the sound]])
+			
+			if targetHeadBone != nil then
+				
+				--This will emit a blood effect at the target's head bone
+				
+				local effectdata = EffectData()
+				effectdata:SetOrigin(targetModel:GetBonePosition(targetHeadBone))
+				
+				--You can also specify which bone you want the effect to be positioned to
+				--effectdata:SetOrigin(targetModel:GetBonePosition(targetModel:LookupBone("ValveBiped.Bip01_Spine")))
+				
+				util.Effect("BloodImpact", effectdata)
+			end
 		end)
 		
 		--Repeat the same for different animations
@@ -100,6 +117,12 @@ hook.Add("CustomKMEffects", "UniqueName", function(ply, animName, targetModel)
 			if !IsValid(targetModel) then return end
 			
 			PlayRandomSound(ply, 1, 5, "player/killmove/km_hit")
+			
+			if targetHeadBone != nil then
+				local effectdata = EffectData()
+				effectdata:SetOrigin(targetModel:GetBonePosition(targetHeadBone))
+				util.Effect("BloodImpact", effectdata)
+			end
 		end)
 	end
 end)
