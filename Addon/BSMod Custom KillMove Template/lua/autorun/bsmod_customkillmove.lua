@@ -1,9 +1,8 @@
+--IMPORTANT: Make sure this is the only custom killmove lua file for your addon since having multiple can cause conflicts and issues
 
 --This adds to a list of entities that can be killmovable (highlighted blue) when taking damage
 --ValveBipeds by default are on this list so use this only for entities with different bone structures such as headcrabs
-
 --Make sure the entity you're checking for in the killmove function below is added to this list, you can add as many as you want
-
 timer.Simple(0, function()
 	if killMovableEnts then
 		
@@ -19,12 +18,10 @@ timer.Simple(0, function()
 end)
 
 --This is the hook for custom killmoves
-
 --IMPORTANT: Make sure to change the UniqueName to something else to avoid conflicts with other custom killmove addons
 hook.Add("CustomKillMoves", "UniqueName", function(ply, target, angleAround)
 	
 	--Setup some values for custom killmove data
-	
 	local plyKMModel = nil
 	local targetKMModel = nil
 	local animName = nil
@@ -36,7 +33,6 @@ hook.Add("CustomKillMoves", "UniqueName", function(ply, target, angleAround)
 	plyKMModel = "models/weapons/c_limbs_template.mdl" --We set the Players killmove model to the custom one that has the animations
 	
 	--Use these checks for angle specific killmoves, make sure to keep the brackets when using them
-	
 	if (angleAround <= 45 or angleAround > 315) then
 		--print("in front of target")
 	elseif (angleAround > 45 and angleAround <= 135) then
@@ -47,9 +43,11 @@ hook.Add("CustomKillMoves", "UniqueName", function(ply, target, angleAround)
 		--print("right of target")
 	end
 	
-	--For this example we'll add some custom Zombie killmoves
+	--No need to add if checks for tons of npcs when you can put target:LookupBone("bonename") in them, an example of this being used is below
 	
-	if target:GetClass() == "npc_zombie" and ply:OnGround() and (angleAround <= 45 or angleAround > 315) then --Check if the Target is a Zombie and that the Player is on the ground
+	--This checks if the target is a Zombie, the Player is on the ground and that the Target model is a valvebiped one
+	--It also has a chance to not happen as shown by the math.random, that way other killmoves can have a chance of happening
+	if target:GetClass() == "npc_zombie" and ply:OnGround() and target:LookupBone("ValveBiped.Bip01_Spine") and (angleAround <= 45 or angleAround > 315) and math.random(1, 3) >= 3 then
 	
 		targetKMModel = "models/bsmodimations_zombie_template.mdl" --Set the Targets killmove model
 		
@@ -58,23 +56,23 @@ hook.Add("CustomKillMoves", "UniqueName", function(ply, target, angleAround)
 		else
 			animName = "killmove_zombie_punch1"
 		end
-		
-		--Positioning the player for different killmove animations
-		
-		if animName == "killmove_zombie_punch1" then
-			plyKMPosition = target:GetPos() + (target:GetForward() * 70 ) --Position the player in front of the Target and x distance away
-		elseif animName == "killmove_zombie_kick1" then
-			plyKMPosition = target:GetPos() + (target:GetForward() * 75 )
-		end
-		
-		kmData[1] = plyKMModel
-		kmData[2] = targetKMModel
-		kmData[3] = animName
-		kmData[4] = plyKMPosition
-		kmData[5] = plyKMAngle
-		
-		if animName != nil then return kmData end --Send the killmove data to the main addons killmove check function
 	end
+	
+	--Positioning the Player for different killmove animations
+	if animName == "killmove_zombie_punch1" then
+		plyKMPosition = target:GetPos() + (target:GetForward() * 70 ) --Position the player in front of the Target and x distance away
+	elseif animName == "killmove_zombie_kick1" then
+		plyKMPosition = target:GetPos() + (target:GetForward() * 75 )
+	end
+
+	--IMPORTANT: Make sure not to duplicate the rest of the code below, it isn't nessecary and can cause issues, just keep them at the bottom of this function
+	kmData[1] = plyKMModel
+	kmData[2] = targetKMModel
+	kmData[3] = animName
+	kmData[4] = plyKMPosition
+	kmData[5] = plyKMAngle
+
+	if animName != nil then return kmData end --Send the killmove data to the main addons killmove check function
 end)
 
 --This is the hook for custom killmove effects and sounds
